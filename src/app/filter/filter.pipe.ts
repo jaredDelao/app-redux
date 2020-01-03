@@ -4,12 +4,23 @@ import { Todo } from '../todo/model/todo.model';
 import * as fromFiltro from './filter.actions';
 
 @Pipe({
-  name: 'filter'
+  name: 'filterTodo'
 })
 export class FilterPipe implements PipeTransform {
 
   transform(todos: Todo[], filtro: fromFiltro.filtroValidos): any {
-    return null;
+
+    switch (filtro) {
+      case 'completados':
+        return todos.filter(todo => todo.completado);
+
+      case 'pendientes':
+
+        return todos.filter(todo => !todo.completado);
+
+      default:
+        return todos;
+    }
   }
 
 }

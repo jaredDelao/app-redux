@@ -51,6 +51,9 @@ export function todoReducer(state = estadoInicial, action: fromTodo.Acciones): T
                 }
             })
 
+        case fromTodo.BORRAR_COMPLETADOS:
+            return state.filter((todoEdit) => !todoEdit.completado)
+
         default:
             return state;
     }
